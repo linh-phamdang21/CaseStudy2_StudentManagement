@@ -8,7 +8,7 @@ public class Student implements Serializable{
     private String name;
     private String telephone;
     private String address;
-    private Date dateOfBirthDate;
+    private Date dateOfBirth;
     private boolean gender;
     private boolean status;
 
@@ -28,8 +28,8 @@ public class Student implements Serializable{
         this.address = address;
     }
 
-    public void setDateOfBirthDate(Date dateOfBirthDate) {
-        this.dateOfBirthDate = dateOfBirthDate;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth= dateOfBirth;
     }
 
     public void setGender(boolean gender) {
@@ -56,8 +56,8 @@ public class Student implements Serializable{
         return address;
     }
 
-    public Date getDateOfBirthDate() {
-        return dateOfBirthDate;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public boolean isGender() {
@@ -67,4 +67,9 @@ public class Student implements Serializable{
     public boolean isStatus() {
         return status;
     }
+
+    @Override
+    public String toString() {
+        return studentId + " - " + name;
+    }   
 }
