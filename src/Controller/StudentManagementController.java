@@ -4,11 +4,15 @@ package Controller;
 import Model.Student;
 import Service.StudentService;
 import Service.StudentServiceImpl;
-import Utility.ClassTableModel;
-import com.mysql.cj.xdevapi.Table;
+import Service.ClassTableModel;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -21,7 +25,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.text.TableView;
+import view.StudentJFrame;
 
 public class StudentManagementController {
     
@@ -31,8 +35,8 @@ public class StudentManagementController {
     
     private StudentService studentService = null;
     
-    private String[] listColumn = {"Ma hoc vien", "STT", "Ho va ten", "Ngay sinh"
-                                   , "Gioi tinh", "So dien thoai", "Dia chi", "Tinh trang"};
+    private String[] listColumn = {"ID", "Ordinal", "Name", "Date of Birth"
+                                   , "Gender", "Phone Number", "Address", "Status"};
     
     private TableRowSorter<TableModel> rowSorter = null;
             
@@ -58,7 +62,7 @@ public class StudentManagementController {
                 if (text.trim().length() == 0){
                     rowSorter.setRowFilter(null);
                 } else{
-                    rowSorter.setRowFilter(RowFilter.regexFilter("?i" + text));
+                    rowSorter.setRowFilter(RowFilter.regexFilter("." + text));
                 }
             }
 
@@ -68,7 +72,7 @@ public class StudentManagementController {
                 if (text.trim().length() == 0){
                     rowSorter.setRowFilter(null);
                 } else{
-                    rowSorter.setRowFilter(RowFilter.regexFilter("?i" + text));
+                    rowSorter.setRowFilter(RowFilter.regexFilter("." + text));
                 }
             }
 
@@ -77,19 +81,77 @@ public class StudentManagementController {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
-        table.getTableHeader().setFont(new Font("Arrial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 50));
+        
+        table.getColumnModel().getColumn(0).setMinWidth(0);
+        table.getColumnModel().getColumn(0).setMaxWidth(0);
+        table.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2 && table.getSelectedRow() != -1) {
+                    DefaultTableModel model = (DefaultTableModel) table.getModel();
+                    int selectedRowIndex = table.getSelectedRow();
+                    selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
+                
+                    Student student = new Student();
+                    student.setStudentId((int) model.getValueAt(selectedRowIndex, 0));
+                    student.setName(model.getValueAt(selectedRowIndex, 2).toString());
+                    student.setDateOfBirth((Date) model.getValueAt(selectedRowIndex, 3));
+                    student.setGender(model.getValueAt(selectedRowIndex, 4).toString().equalsIgnoreCase("Nam"));
+                    student.setTelephone(model.getValueAt(selectedRowIndex, 5) != null ? 
+                            model.getValueAt(selectedRowIndex, 5).toString() : " ");
+                    student.setAddress(model.getValueAt(selectedRowIndex, 6) != null ?
+                            model.getValueAt(selectedRowIndex, 6).toString() : " ");
+                    student.setStatus((boolean) model.getValueAt(selectedRowIndex, 7));
+                    
+                    StudentJFrame frame = new StudentJFrame(student);
+                    frame.setTitle("Student's Information");
+                    frame.setResizable(false);
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                }
+            }
+            
+});
+        
+        table.getTableHeader().setFont(new Font("Arrial", Font.BOLD, 12));
+        table.getTableHeader().setPreferredSize(new Dimension(80, 30));
         table.setRowHeight(50);
         table.validate();
         table.repaint();
         
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.getViewport().add(table);
-        scrollPane.setPreferredSize(new Dimension(1300, 400));
+        scrollPane.setPreferredSize(new Dimension(700, 300));
+        
         jpnView.removeAll();
         jpnView.setLayout(new BorderLayout());
         jpnView.add(scrollPane);
         jpnView.validate();
         jpnView.repaint();
-    }       
+    }  
+    
+    public void setEvent(){
+        btnAdd.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                StudentJFrame frame = new StudentJFrame(new Student());
+                frame.setTitle("Student's Information");
+                frame.setLocationRelativeTo(null);
+                frame.setResizable(false);
+                frame.setVisible(true);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btnAdd.setBackground(new Color(0,200,83));                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btnAdd.setBackground(new Color(51,204,0));
+            }
+        });
+    }
 };

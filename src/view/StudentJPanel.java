@@ -9,6 +9,7 @@ public class StudentJPanel extends javax.swing.JPanel {
         
         StudentManagementController controller = new StudentManagementController(jpnView, btnAdd, jtfSearch);
         controller.setDateToTable();
+        controller.setEvent();
         
     }
 
@@ -37,9 +38,12 @@ public class StudentJPanel extends javax.swing.JPanel {
             .addGap(0, 373, Short.MAX_VALUE)
         );
 
-        btnAdd.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btnAdd.setBackground(new java.awt.Color(51, 204, 0));
+        btnAdd.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add New");
         btnAdd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAdd.setInheritsPopupMenu(true);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -54,7 +58,7 @@ public class StudentJPanel extends javax.swing.JPanel {
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 291, Short.MAX_VALUE)
+            .addGap(0, 303, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -62,7 +66,7 @@ public class StudentJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(308, Short.MAX_VALUE)
+                .addContainerGap(315, Short.MAX_VALUE)
                 .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)

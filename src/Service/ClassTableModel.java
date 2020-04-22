@@ -1,5 +1,5 @@
 
-package Utility;
+package Service;
 
 import Model.Student;
 import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
@@ -14,6 +14,11 @@ public class ClassTableModel {
             public boolean isCellEditable(int row, int column){
                 return false;
             }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 7 ? Boolean.class : String.class;
+            }
         };
         dtm.setColumnIdentifiers(listColumn);
         int columns = listColumn.length;
@@ -27,7 +32,7 @@ public class ClassTableModel {
                 obj[1] = (i + 1);
                 obj[2] = student.getName();
                 obj[3] = student.getDateOfBirth();
-                obj[4] = student.isGender();
+                obj[4] = student.isGender() == true? "Male" : "Female";
                 obj[5] = student.getTelephone();
                 obj[6] = student.getAddress();
                 obj[7] = student.isStatus();
