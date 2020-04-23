@@ -2,22 +2,26 @@
 package Controller;
 
 import Model.Student;
+import Service.ClassTableModel;
 import Service.StudentService;
 import Service.StudentServiceImpl;
-import Service.ClassTableModel;
+import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
@@ -32,9 +36,17 @@ public class StudentManagementController {
     private JPanel jpnView;
     private JButton btnAdd;
     private JTextField jtfSearch;
-    
+    private JTextField jtfStudentID;
+    private JTextField jtfName;
+    private JDateChooser jdcDateOfBirth;
+    private JRadioButton jrdMale;
+    private JRadioButton jrdFemale;
+    private JTextField jtfPhoneNumber;
+    private JTextArea jtaAddress;
+    private JCheckBox jcbStatus;
+    private JLabel jlbMsg;
+    private ClassTableModel classTableModel = null;
     private StudentService studentService = null;
-    
     private String[] listColumn = {"ID", "Ordinal", "Name", "Date of Birth"
                                    , "Gender", "Phone Number", "Address", "Status"};
     
@@ -44,7 +56,7 @@ public class StudentManagementController {
         this.jpnView = jpnView;
         this.btnAdd = btnAdd;
         this.jtfSearch = jtfSearch;
-        
+        this.classTableModel = new ClassTableModel();
         this.studentService = new StudentServiceImpl();
     }
     
@@ -62,7 +74,7 @@ public class StudentManagementController {
                 if (text.trim().length() == 0){
                     rowSorter.setRowFilter(null);
                 } else{
-                    rowSorter.setRowFilter(RowFilter.regexFilter("." + text));
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
             }
 
@@ -72,13 +84,13 @@ public class StudentManagementController {
                 if (text.trim().length() == 0){
                     rowSorter.setRowFilter(null);
                 } else{
-                    rowSorter.setRowFilter(RowFilter.regexFilter("." + text));
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                
             }
         });
         
@@ -93,9 +105,8 @@ public class StudentManagementController {
                     DefaultTableModel model = (DefaultTableModel) table.getModel();
                     int selectedRowIndex = table.getSelectedRow();
                     selectedRowIndex = table.convertRowIndexToModel(selectedRowIndex);
-                
                     Student student = new Student();
-                    student.setStudentId((int) model.getValueAt(selectedRowIndex, 0));
+                    student.setStudentId(model.getValueAt(selectedRowIndex, 0).toString());
                     student.setName(model.getValueAt(selectedRowIndex, 2).toString());
                     student.setDateOfBirth((Date) model.getValueAt(selectedRowIndex, 3));
                     student.setGender(model.getValueAt(selectedRowIndex, 4).toString().equalsIgnoreCase("Nam"));

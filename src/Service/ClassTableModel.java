@@ -1,8 +1,8 @@
 
 package Service;
 
+import DAO.StudentList;
 import Model.Student;
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,9 +24,10 @@ public class ClassTableModel {
         int columns = listColumn.length;
         Object[] obj = null;
         int rows = listItem.size();
+        Student student = null;
         if (rows > 0){
-            for (int i = 0; i < rows; i++){
-                Student student = listItem.get(i);
+            for (int i = 0; i < rows; i++){                
+                student = listItem.get(i);
                 obj = new Object[columns];
                 obj[0] = student.getStudentId();
                 obj[1] = (i + 1);
@@ -37,9 +38,8 @@ public class ClassTableModel {
                 obj[6] = student.getAddress();
                 obj[7] = student.isStatus();
                 dtm.addRow(obj);
+                }
             }
-        }
         return dtm;  
     }
-    
 }

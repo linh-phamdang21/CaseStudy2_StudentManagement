@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Student implements Serializable{
-    private int studentId;
+    private String studentId;
     private String name;
     private String telephone;
     private String address;
@@ -12,7 +12,11 @@ public class Student implements Serializable{
     private boolean gender;
     private boolean status;
 
-    public void setStudentId(int studentId) {
+    public Student(){
+        
+    }
+    
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
@@ -40,7 +44,7 @@ public class Student implements Serializable{
         this.status = status;
     }
 
-    public int getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 

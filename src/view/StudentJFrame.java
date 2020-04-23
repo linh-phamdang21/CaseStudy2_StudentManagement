@@ -8,7 +8,7 @@ public class StudentJFrame extends javax.swing.JFrame {
     public StudentJFrame(Student student) {
         initComponents();
         
-        StudentController controller = new StudentController(btnSubmit,jtfStudentID,jtfName,jdcDateOfBirth,jrdMale,jrdFemale,jtfPhoneNumber,jtaAddress,jcbStatus);
+        StudentController controller = new StudentController(btnSubmit,jtfStudentID,jtfName,jdcDateOfBirth,jrdMale,jrdFemale,jtfPhoneNumber,jtaAddress,jcbStatus,jlbMsg);
         controller.setView(student);
         controller.setEvent();
     }
@@ -46,6 +46,7 @@ public class StudentJFrame extends javax.swing.JFrame {
         jtaAddress = new javax.swing.JTextArea();
         jdcDateOfBirth = new com.toedter.calendar.JDateChooser();
         btnSubmit = new javax.swing.JButton();
+        jlbMsg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -212,6 +213,8 @@ public class StudentJFrame extends javax.swing.JFrame {
             }
         });
 
+        jlbMsg.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -221,15 +224,19 @@ public class StudentJFrame extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
+                .addComponent(jlbMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSubmit)
                 .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -245,7 +252,7 @@ public class StudentJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         pack();
@@ -291,6 +298,7 @@ public class StudentJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JCheckBox jcbStatus;
     private com.toedter.calendar.JDateChooser jdcDateOfBirth;
+    private javax.swing.JLabel jlbMsg;
     private javax.swing.JRadioButton jrdFemale;
     private javax.swing.JRadioButton jrdMale;
     private javax.swing.JTextArea jtaAddress;
