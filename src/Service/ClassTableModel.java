@@ -1,7 +1,6 @@
 
 package Service;
 
-import DAO.StudentList;
 import Model.Student;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;

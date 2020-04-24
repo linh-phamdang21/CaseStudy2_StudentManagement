@@ -2,6 +2,8 @@
 package Controller;
 
 import Model.Student;
+import Service.ClassTableModel;
+import Service.StudentService;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -12,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import DAO.StudentList;
 
 public class StudentController{
     
@@ -45,7 +46,7 @@ public class StudentController{
         this.jtaAddress = jtaAddress;
         this.jcbStatus = jcbStatus;
         this.jlbMsg = jlbMsg;
-        //this.studentSirvice = new StudentService();
+        //this.studentSirvice = new StudentServiceImpl() {};
     }
 
     public void setView(Student student){
@@ -64,9 +65,12 @@ public class StudentController{
         jcbStatus.setSelected(student.isStatus());
     }
     
+    public void addStudent(){
+        
+    }
+    
     public void setEvent(){
         btnSubmit.addMouseListener(new MouseAdapter() {
-            StudentList studentList = new StudentList();
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (jtfName.getText().length() == 0){
@@ -80,7 +84,6 @@ public class StudentController{
                     student.setAddress(jtaAddress.getText());
                     student.setStudentId("#" + jtfStudentID.getText());
                     student.setStatus(jcbStatus.isSelected());
-                    //studentList.students.add(student);
                     jlbMsg.setText("Edited student successfully");
                 }
             }
