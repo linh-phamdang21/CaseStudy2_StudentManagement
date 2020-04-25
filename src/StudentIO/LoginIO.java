@@ -12,20 +12,20 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class StudentIO {
+public class LoginIO {
     
-    private static String loginFilePath = "StudentFile.txt";
+    private static String LoginFilePath = "LoginFile.txt";
     ArrayList<UserAccount>userList = new ArrayList<>();
     
     public void readUserFile() throws Exception {
         FileInputStream fileInputStream;
         ObjectInputStream objectInputStream = null;
         try {
-            fileInputStream = new FileInputStream(loginFilePath);
+            fileInputStream = new FileInputStream(LoginFilePath);
             objectInputStream = new ObjectInputStream(fileInputStream);
             ArrayList<Object> resultList = (ArrayList) objectInputStream.readObject();
-            for (Object student : resultList){
-                System.out.println(student.toString());
+            for (Object user : resultList){
+                System.out.println(user.toString());;
             }            
         } catch (Exception e){
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class StudentIO {
         FileOutputStream fileOutputStream;
         ObjectOutputStream objectOutputStream = null;
             try {
-                fileOutputStream = new FileOutputStream(loginFilePath);
+                fileOutputStream = new FileOutputStream(LoginFilePath);
                 objectOutputStream = new ObjectOutputStream(fileOutputStream);
                 objectOutputStream.writeObject(userList);
             } catch (IOException e) {
@@ -60,3 +60,19 @@ public class StudentIO {
             }
     }
 }
+
+//try {
+//            fileOutputStream = new FileOutputStream(LoginFilePath);
+//            objectOutput = new ObjectOutputStream(fileOutputStream);
+//            objectOutput.writeObject(userList);
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        } finally {
+//            try{
+//                if (objectOutput != null){
+//                    objectOutput.close();
+//                }
+//            } catch (IOException e){
+//                e.printStackTrace();
+//            }
+//        }
