@@ -29,10 +29,6 @@ public class StudentController{
     private JLabel jlbMsg;
     private Student student;
     
-//public List<Student> updateList = new ArrayList<>();
-    
-    //private StudentService studentSirvice = null;
-    
     public StudentController(JButton btnSubmit, JTextField jtfStudentID, JTextField jtfName, 
             JDateChooser jdcDateOfBirth, JRadioButton jrdMale, JRadioButton jrdFemale, JTextField jtfPhoneNumber, 
             JTextArea jtaAddress, JCheckBox jcbStatus, JLabel jlbMsg) {
@@ -51,18 +47,18 @@ public class StudentController{
 
     public void setView(Student student){
         this.student = student;
-        jtfStudentID.setText("#" + student.getStudentId());
+        this.jtfStudentID.setText("#" + student.getStudentId());
         jtfName.setText(student.getName());
         if (student.isGender()){
-            jrdMale.setSelected(true);
-            jrdFemale.setSelected(false);
+            this.jrdMale.setSelected(true);
+            this.jrdFemale.setSelected(false);
         } else {
-            jrdFemale.setSelected(true);
-            jrdMale.setSelected(false);
+            this.jrdFemale.setSelected(true);
+            this.jrdMale.setSelected(false);
         }
-        jtfPhoneNumber.setText(student.getTelephone());
-        jtaAddress.setText(student.getAddress());
-        jcbStatus.setSelected(student.isStatus());
+        this.jtfPhoneNumber.setText(student.getTelephone());
+        this.jtaAddress.setText(student.getAddress());
+        this.jcbStatus.setSelected(student.isStatus());
     }
     
     public void addStudent(){

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class StudentIO {
     
     private static String loginFilePath = "StudentFile.txt";
-    ArrayList<UserAccount>userList = new ArrayList<>();
+    ArrayList<UserAccount> userList = new ArrayList<>();
     
     public void readUserFile() throws Exception {
         FileInputStream fileInputStream;

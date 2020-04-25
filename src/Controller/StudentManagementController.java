@@ -47,7 +47,7 @@ public class StudentManagementController {
     private JLabel jlbMsg;
     private ClassTableModel classTableModel = null;
     private StudentService studentService = null;
-    private String[] listColumn = {"ID", "Ordinal", "Name", "Date of Birth"
+    private String[] listColumn = {"Ordinal", "ID", "Name", "Date of Birth"
                                    , "Gender", "Phone Number", "Address", "Status"};
     
     private TableRowSorter<TableModel> rowSorter = null;
@@ -60,7 +60,7 @@ public class StudentManagementController {
         this.studentService = new StudentServiceImpl();
     }
     
-    public void setDateToTable(){
+    public void setStudentToTable(){
         List<Student> listItem = studentService.getList();
         DefaultTableModel model = new ClassTableModel().setTableStudent(listItem, listColumn);
         JTable table = new JTable(model);
@@ -93,10 +93,6 @@ public class StudentManagementController {
                 
             }
         });
-        
-        table.getColumnModel().getColumn(0).setMinWidth(0);
-        table.getColumnModel().getColumn(0).setMaxWidth(0);
-        table.getColumnModel().getColumn(0).setPreferredWidth(0);
         
         table.addMouseListener(new MouseAdapter() {
             @Override

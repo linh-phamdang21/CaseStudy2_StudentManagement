@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import view.ClassJPanel;
 import view.CourseJPanel;
-import view.DataJPanel;
 import view.HomepageJPanel;
 import view.StudentJPanel;
 
@@ -72,9 +71,6 @@ public class ScreenSwitchController {
                case "Class":
                    node = new ClassJPanel();
                    break;
-                case "Data":
-                    node = new DataJPanel();
-                    break;
                 default:
                    node = new StudentJPanel();
                    break;

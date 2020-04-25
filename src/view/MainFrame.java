@@ -19,9 +19,7 @@ public class MainFrame extends javax.swing.JFrame {
         listItem.add(new ListBean("Homepage",jpnHomepage, jlbHomepage));
         listItem.add(new ListBean("Student",jpnStudent, jlbStudent));
         listItem.add(new ListBean("Course",jpnCourse, jlbCourse));
-        listItem.add(new ListBean("Class",jpnClass, jlbClass));
-        listItem.add(new ListBean("Data",jpnData, jlbData));
-        
+        listItem.add(new ListBean("Class",jpnClass, jlbClass));        
         controller.setEvent(listItem);
     }
 
@@ -46,8 +44,6 @@ public class MainFrame extends javax.swing.JFrame {
         jlbCourse = new javax.swing.JLabel();
         jpnClass = new javax.swing.JPanel();
         jlbClass = new javax.swing.JLabel();
-        jpnData = new javax.swing.JPanel();
-        jlbData = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -162,28 +158,6 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(jlbClass, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
         );
 
-        jpnData.setBackground(new java.awt.Color(76, 175, 80));
-        jpnData.setPreferredSize(new java.awt.Dimension(160, 44));
-
-        jlbData.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jlbData.setForeground(new java.awt.Color(255, 255, 255));
-        jlbData.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlbData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/data_white_18dp.png"))); // NOI18N
-        jlbData.setText("  Data");
-
-        javax.swing.GroupLayout jpnDataLayout = new javax.swing.GroupLayout(jpnData);
-        jpnData.setLayout(jpnDataLayout);
-        jpnDataLayout.setHorizontalGroup(
-            jpnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnDataLayout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
-                .addComponent(jlbData, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jpnDataLayout.setVerticalGroup(
-            jpnDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout jpnMenuLayout = new javax.swing.GroupLayout(jpnMenu);
         jpnMenu.setLayout(jpnMenuLayout);
         jpnMenuLayout.setHorizontalGroup(
@@ -192,7 +166,6 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jpnMenuLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpnData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jpnStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,9 +184,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jpnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jpnClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jpnData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
@@ -265,12 +236,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel jlbClass;
     private javax.swing.JLabel jlbCourse;
-    private javax.swing.JLabel jlbData;
     private javax.swing.JLabel jlbHomepage;
     private javax.swing.JLabel jlbStudent;
     private javax.swing.JPanel jpnClass;
     private javax.swing.JPanel jpnCourse;
-    private javax.swing.JPanel jpnData;
     private javax.swing.JPanel jpnHomepage;
     private javax.swing.JPanel jpnMenu;
     private javax.swing.JPanel jpnRoot;

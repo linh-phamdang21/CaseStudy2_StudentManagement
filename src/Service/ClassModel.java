@@ -1,13 +1,12 @@
 
 package Service;
 
-import Model.Student;
+import Model.CurrentClass;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-public class ClassTableModel {
-    
-    public DefaultTableModel setTableStudent(List<Student> listItem, String[] listColumn){
+public class ClassModel {
+    public DefaultTableModel setTableClass(List<CurrentClass> listItem, String[] listColumn){
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column){
@@ -16,26 +15,25 @@ public class ClassTableModel {
 
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 7 ? Boolean.class : String.class;
+                return String.class;
             }
         };
         dtm.setColumnIdentifiers(listColumn);
         int columns = listColumn.length;
         Object[] obj = null;
         int rows = listItem.size();
-        Student student = null;
+        CurrentClass currentClass = null;
         if (rows > 0){
             for (int i = 0; i < rows; i++){                
-                student = listItem.get(i);
+                currentClass = listItem.get(i);
                 obj = new Object[columns];
                 obj[0] = i + 1;
-                obj[1] = student.getStudentId();
-                obj[2] = student.getName();
-                obj[3] = student.getDateOfBirth();
-                obj[4] = student.isGender() == true? "Male" : "Female";
-                obj[5] = student.getTelephone();
-                obj[6] = student.getAddress();
-                obj[7] = student.isStatus();
+                obj[1] = currentClass.getClassId();
+                obj[2] = currentClass.getName();
+                obj[3] = currentClass.getCourse();
+                obj[4] = currentClass.getStudentAmount();
+                obj[5] = currentClass.getRegistrationDate();
+                obj[6] = currentClass.isStatus() == true? "Actived" : "Not Actived";
                 dtm.addRow(obj);
                 }
             }

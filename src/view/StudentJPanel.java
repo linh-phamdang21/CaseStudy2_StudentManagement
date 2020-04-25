@@ -8,7 +8,7 @@ public class StudentJPanel extends javax.swing.JPanel {
         initComponents();
         
         StudentManagementController controller = new StudentManagementController(jpnView, btnAdd, jtfSearch);
-        controller.setDateToTable();
+        controller.setStudentToTable();
         controller.setEvent();
         
     }
