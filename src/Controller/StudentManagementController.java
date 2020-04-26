@@ -105,7 +105,7 @@ public class StudentManagementController {
                     student.setStudentId(model.getValueAt(selectedRowIndex, 0).toString());
                     student.setName(model.getValueAt(selectedRowIndex, 2).toString());
                     student.setDateOfBirth((Date) model.getValueAt(selectedRowIndex, 3));
-                    student.setGender(model.getValueAt(selectedRowIndex, 4).toString().equalsIgnoreCase("Nam"));
+                    student.setGender(model.getValueAt(selectedRowIndex, 4).toString().equalsIgnoreCase("Male"));
                     student.setTelephone(model.getValueAt(selectedRowIndex, 5) != null ? 
                             model.getValueAt(selectedRowIndex, 5).toString() : " ");
                     student.setAddress(model.getValueAt(selectedRowIndex, 6) != null ?

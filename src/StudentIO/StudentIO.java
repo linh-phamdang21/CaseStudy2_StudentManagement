@@ -1,6 +1,7 @@
 
 package StudentIO;
 
+import Model.Student;
 import Model.UserAccount;
 import Service.AccountList;
 import java.io.File;
@@ -15,9 +16,9 @@ import java.util.ArrayList;
 public class StudentIO {
     
     private static String loginFilePath = "StudentFile.txt";
-    ArrayList<UserAccount> userList = new ArrayList<>();
+    ArrayList<Student> userList = new ArrayList<>();
     
-    public void readUserFile() throws Exception {
+    public void readStudentFile() throws Exception {
         FileInputStream fileInputStream;
         ObjectInputStream objectInputStream = null;
         try {
@@ -40,7 +41,7 @@ public class StudentIO {
         }
     }
 
-    public void writeUserFile(ArrayList<UserAccount> userList) {
+    public void writeStudentFile(ArrayList<Student> userList) {
         FileOutputStream fileOutputStream;
         ObjectOutputStream objectOutputStream = null;
             try {

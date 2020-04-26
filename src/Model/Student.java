@@ -12,8 +12,19 @@ public class Student implements Serializable{
     private boolean gender;
     private boolean status;
 
+    
     public Student(){
         
+    }
+    
+    public Student(String studentId, String name, String telephone, String address, Date dateOfBirth, boolean gender, boolean  status){
+        this.studentId = studentId;
+        this.name = name;
+        this.telephone = telephone;
+        this.address = address;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.status = status;
     }
     
     public void setStudentId(String studentId) {
@@ -74,6 +85,7 @@ public class Student implements Serializable{
 
     @Override
     public String toString() {
-        return studentId + " - " + name;
+        return "Studen ID: " + studentId + " , name: "+ name + ", gender: " + gender + ", phone number: " + telephone +
+                ", address: " + address + "";
     }   
 }

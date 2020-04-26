@@ -43,12 +43,14 @@ public class AccountController {
             @Override
             public void mouseClicked(MouseEvent e) {              
                 if (jtfUserName.getText().length() == 0 || jtfPassword.getText().length() == 0){
-                    jlbMsg.setText("Please enter Username and Password");
+                    jlbMsg.setText("Please enter Username and Password!");
                 } else {
                         if (jtfUserName.getText().equals(accountList.getDefaultUserName()) && jtfPassword.getText().equals(accountList.getDefaultPassword())){
                                 dialog.dispose();
                                 MainFrame frame = new MainFrame();
                                 frame.setVisible(true);                    
+                        } else{
+                            jlbMsg.setText("Username or Password is incorrect!");
                         }
                 }  
             }

@@ -6,10 +6,10 @@ public class StudentJPanel extends javax.swing.JPanel {
 
     public StudentJPanel() {
         initComponents();
-        
         StudentManagementController controller = new StudentManagementController(jpnView, btnAdd, jtfSearch);
-        controller.setStudentToTable();
-        controller.setEvent();
+            controller.setStudentToTable();
+            controller.setEvent();
+        
         
     }
 
